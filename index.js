@@ -32,8 +32,10 @@ app.set("view engine", "hbs");
 app.use(express.static("public"));
 
 app.listen(5000, console.log("Listening"));
-
-app.get("/:id", (req, res) => {
+app.get("/", (req, res) => {
+    res.render("index");
+});
+app.get("/:id/", (req, res) => {
     console.log(req.params.id);
 
     var vista = req.params.id+"";
@@ -42,10 +44,10 @@ app.get("/:id", (req, res) => {
         contacto += 1;
     } else if (vista == "proyectos"){
         proyectos += 1;
-    } else if (vista == ""){
+    } else if (vista == "inicio"){
         inicio += 1;
     } else {
-        console.log("404")
+        vista = "404";
     }
     
     

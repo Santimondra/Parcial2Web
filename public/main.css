@@ -39,3 +39,7 @@ a:hover{
     box-shadow: 0 5px 10px #ddd;
     margin: 9px;
 }
+b{
+    font-weight: 400;
+    font-size: 50px;
+}
