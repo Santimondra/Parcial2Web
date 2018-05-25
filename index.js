@@ -7,13 +7,32 @@ var app = express(),
 db;
 
 var visitas = "",
+    encabezadoActual = "Numero de visitas desde que se inició el servidor:",
+    encabezadoAnterior = "Numero de visitas en la sesión anterior:"
     inicio = 0,
     proyectos = 0,
     contacto = 0;
 
-fs.writeFile("visitas.txt", 
-`Numero de visitas desde que se inició el servidor:
+var content;
+    // First I want to read the file
+    fs.readFile('visitas.txt', function read(err, data) {
+        if (err) {
+            throw err;
+        }
+        content = data;
 
+        fs.writeFile("Historial de Visitas.txt", encabezadoAnterior + content,
+        function(err) {
+           if(err) {
+               return console.log(err);
+           }
+           console.log("intento de crear historial de visitas");
+       });
+    });
+
+
+fs.writeFile("visitas.txt", encabezadoActual+
+`
     Inicio: 0
     Proyectos: 0
     Contacto: 0
@@ -32,9 +51,13 @@ app.set("view engine", "hbs");
 app.use(express.static("public"));
 
 app.listen(5000, console.log("Listening"));
+
+
 app.get("/", (req, res) => {
     res.render("index");
 });
+
+
 app.get("/:id/", (req, res) => {
     console.log(req.params.id);
 
@@ -68,7 +91,7 @@ app.get("/:id/", (req, res) => {
     res.render(vista);
 });
 
-/*
+/* PRIMER INTENTO
 app.get("/", (req, res) => {
     inicio += 1;
     fs.writeFile("visitas.txt", 

@@ -1,6 +1,4 @@
 Numero de visitas desde que se inició el servidor:
-    
-        Inicio:12
-        Proyectos: 24
-        Contacto: 15
-    
+    Inicio: 0
+    Proyectos: 0
+    Contacto: 0

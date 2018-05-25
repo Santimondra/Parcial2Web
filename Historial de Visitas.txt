@@ -1,0 +1,4 @@
+Numero de visitas en la sesión anterior:Numero de visitas desde que se inició el servidor:
+    Inicio: 0
+    Proyectos: 0
+    Contacto: 0
